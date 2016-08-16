@@ -4,7 +4,7 @@
  * @copyright Zicht Online <http://zicht.nl>
  */
 
-namespace Zicht\Tool\Plugin\Watch;
+namespace Zicht\Tool\Plugin\Typescript;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Zicht\Tool\Plugin as BasePlugin;
@@ -12,7 +12,7 @@ use Zicht\Tool\Plugin as BasePlugin;
 /**
  * Class Plugin
  *
- * @package Zicht\Tool\Plugin\Watch
+ * @package Zicht\Tool\Plugin\Typescript
  */
 class Plugin extends BasePlugin
 {
