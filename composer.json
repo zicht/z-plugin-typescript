@@ -1,0 +1,16 @@
+{
+    "name": "zicht/z-plugin-typescript",
+    "description": "'typescript' plugin for Z",
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "scripts": {
+        "post-install-cmd": [
+        ],
+        "post-update-cmd": [
+        ]
+    },
+    "minimum-stability": "dev",
+    "extra": {
+    }
+}
