@@ -13,7 +13,7 @@ tasks:
         help: Compile typescript
         args:
             _root: ? cwd
-        pre: @typings.install
+        pre: @typescript.typings
         do:
             - cd $(_root) && node $(typescript.bin) --project $(typescript.source)
 
@@ -21,14 +21,14 @@ tasks:
         help: Compile typescript and watch for changes
         args:
             _root: ? cwd
-        pre: @typings.install
+        pre: @typescript.typings
         do:
             - cd $(_root) && node $(typescript.bin) --project $(typescript.source) --watch
 
-    typings.install:
+    typescript.typings:
         help: Download typing files
         args:
             _root: ? cwd
-        unless: is_file(cat(_root, "typings.json"))
+        unless: is_file(cat(_root, "/typings/index.d.ts")) || !is_file(cat(_root, "/typings.json"))
         do:
             - cd $(_root) && node $(typescript.typings_bin) install
