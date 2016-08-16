@@ -9,11 +9,21 @@ tasks:
         post:
             - @typescript.update
 
+    typescript.deps:
+        args:
+            _root: ? cwd
+        unless: is_file(cat(_root, "/node_modules/.npm.installed")) || !is_file(cat(_root, "/package.json"))
+        do: cd $(_root) && npm install
+        post: mkdir -p $(_root)/node_modules && touch $(_root)/node_modules/.npm.installed
+        yield: true
+
     typescript.update:
         help: Compile typescript
         args:
             _root: ? cwd
-        pre: @typescript.typings
+        pre:
+            - @typescript.deps
+            - @typescript.typings
         do:
             - cd $(_root) && node $(typescript.bin) --project $(typescript.source)
 
@@ -21,7 +31,9 @@ tasks:
         help: Compile typescript and watch for changes
         args:
             _root: ? cwd
-        pre: @typescript.typings
+        pre:
+            - @typescript.deps
+            - @typescript.typings
         do:
             - cd $(_root) && node $(typescript.bin) --project $(typescript.source) --watch
 
