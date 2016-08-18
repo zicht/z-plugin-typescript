@@ -27,41 +27,16 @@ class Plugin extends BasePlugin
                 ->arrayNode('typescript')
                     ->children()
                         ->scalarNode('bin')
-                            ->defaultValue('./node_modules/typescript/bin/tsc')
-                            ->beforeNormalization()
-                                ->always(function($v) {
-                                    if (is_file($v)) {
-                                        return realpath($v);
-                                    }
-                                })
-                                ->end()
-                            ->validate()
-                                ->ifTrue(function($f) {
-                                    return !is_file($f);
-                                })
-                                ->thenInvalid('File does not exist. Do you need to install typescript? npm install typescript')
-                            ->end()
+                            ->defaultValue('./node_modules/typescript/bin/tsc')->end()
                         ->end()
-                        ->scalarNode('source')->defaultValue('htmldev/src')->end()
+                        ->scalarNode('source')
+                            ->defaultValue('htmldev/src')->end()
+                        ->end()
                         ->scalarNode('typings_bin')
-                            ->defaultValue('./node_modules/typings/dist/bin.js')
-                            ->beforeNormalization()
-                                ->always(function($v) {
-                                    if (is_file($v)) {
-                                        return realpath($v);
-                                    }
-                                })
-                                ->end()
-                            ->validate()
-                                ->ifTrue(function($f) {
-                                    return !is_file($f);
-                                })
-                                ->thenInvalid('File does not exist. Do you need to install typings? npm install typings')
-                            ->end()
+                            ->defaultValue('./node_modules/typings/dist/bin.js')->end()
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 }
