@@ -6,6 +6,8 @@ typescript:
 
 tasks:
     build:
+        set:
+            _root: build.dir
         post:
             - @typescript.update
 
