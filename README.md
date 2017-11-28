@@ -2,5 +2,6 @@
 
 Provides tasks and deploy hooks for using `tsc` (typescript compiler).
 
-# Maintainer(s)
-* Joppe Aarts <joppe@zicht.nl>
+# Maintainers
+* Michael Roterman <michael@zicht.nl>
+* Boudewijn Schoon <boudewijn@zicht.nl>
