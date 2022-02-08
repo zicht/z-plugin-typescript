@@ -9,7 +9,7 @@ tasks:
         set:
             _root: build.dir
         post:
-            - @typescript.update
+            - '@typescript.update'
 
     typescript.deps:
         args:
@@ -24,8 +24,8 @@ tasks:
         args:
             _root: ? cwd
         pre:
-            - @typescript.deps
-            - @typescript.typings
+            - '@typescript.deps'
+            - '@typescript.typings'
         do:
             - cd $(_root) && node $(typescript.bin) --project $(typescript.source)
 
@@ -34,8 +34,8 @@ tasks:
         args:
             _root: ? cwd
         pre:
-            - @typescript.deps
-            - @typescript.typings
+            - '@typescript.deps'
+            - '@typescript.typings'
         do:
             - cd $(_root) && node $(typescript.bin) --project $(typescript.source) --watch
 
